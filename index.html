@@ -62,10 +62,6 @@
                     <span class="ml-2">Creating dataset and training model... This may take a few minutes.</span>
                 </div>
             </div>
-            <div id="plotImage" class="mt-4 hidden">
-                <h3 class="text-lg font-semibold mb-2">Model Training Visualization</h3>
-                <img id="predictionPlot" src="" alt="Prediction Plot" class="w-full rounded-lg shadow-md">
-            </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -162,8 +158,6 @@
             const epochs = document.getElementById('epochs').value;
             const batchSize = document.getElementById('batchSize').value;
 
-            const plotDiv = document.getElementById('plotImage');
-            const plotImg = document.getElementById('predictionPlot');
             
             if (!stockSymbol) {
                 alert('Please enter a stock symbol');
@@ -198,9 +192,6 @@
                 
                 if (data.status === 'success') {
                     statusDiv.innerHTML = `<p class="text-green-600 p-4 bg-green-100 rounded-lg">✓ Dataset created successfully for ${stockSymbol}!</p>`;
-                    // Show prediction plot image
-                    plotImg.src = `predicted_vs_actual_prices.png`;
-                    plotDiv.classList.remove('hidden');
 
                 } else {
                     statusDiv.innerHTML = `<p class="text-red-600 p-4 bg-red-100 rounded-lg">✗ Error: ${data.error}</p>`;
